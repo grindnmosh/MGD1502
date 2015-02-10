@@ -11,9 +11,19 @@
 @interface MarchBegins : CCScene
 {
     CCNode* _physicsNode;
+    CCNode* _ground1;
+    CCNode* _ground2;
+    CCNode* _ground3;
+    CCNode* _ground4;
+    CCNode* _ground5;
+    CCNode* _castlebg;
     CCNode* _knight;
-    CCNode* _wiz;
-    CCNode* _darkSpirit;
-    CCNode* _gold;
+    CCSprite* _wiz;
+    CCSprite* _darkSpirit;
+    CCSprite* _gold;
+    CCSprite* _boulder;
+    NSArray* _grounds;
+    NSMutableArray* _spritesArray;
+    NSTimeInterval _sinceTouch;
 }
 @end

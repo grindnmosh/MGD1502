@@ -94,6 +94,7 @@
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
+		E266E7051A8A798400B2CD92 /* jump.caf in Resources */ = {isa = PBXBuildFile; fileRef = E266E7041A8A798400B2CD92 /* jump.caf */; };
 		E2D4D80B1A813B7100388F99 /* MarchBegins.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D80A1A813B7100388F99 /* MarchBegins.m */; };
 		E2D4D81A1A81501500388F99 /* gold.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D4D8171A81501500388F99 /* gold.wav */; };
 		E2D4D81B1A81501500388F99 /* Maced_Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D4D8181A81501500388F99 /* Maced_Hit.wav */; };
@@ -216,6 +217,7 @@
 		BC5399D61A44DCC90063F482 /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
 		BC5399D71A44DCC90063F482 /* JavaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaKit.framework"; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
+		E266E7041A8A798400B2CD92 /* jump.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump.caf; sourceTree = "<group>"; };
 		E2D4D8091A813B7100388F99 /* MarchBegins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarchBegins.h; path = Source/MarchBegins.h; sourceTree = "<group>"; };
 		E2D4D80A1A813B7100388F99 /* MarchBegins.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarchBegins.m; path = Source/MarchBegins.m; sourceTree = "<group>"; };
 		E2D4D8171A81501500388F99 /* gold.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gold.wav; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 		E2D4D8161A81501500388F99 /* resources-auto */ = {
 			isa = PBXGroup;
 			children = (
+				E266E7041A8A798400B2CD92 /* jump.caf */,
 				E2D4D8231A815B8D00388F99 /* Alters.caf */,
 				E2D4D8241A815B8D00388F99 /* Alters.mp3 */,
 				E2D4D8251A815B8D00388F99 /* bgm.caf */,
@@ -783,6 +786,7 @@
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				E2D4D8281A815B8D00388F99 /* bgm.caf in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
+				E266E7051A8A798400B2CD92 /* jump.caf in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
