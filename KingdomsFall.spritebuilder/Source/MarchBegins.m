@@ -91,28 +91,7 @@
 
 
 //constant run method. scrolling background full works when run but constant. looking for way to run it only when knight moves. also runs collision check.
-- (void)update:(CCTime)delta {
-    
-    //scrolling background
-    /*_physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y);
-    for (CCNode *ground in _grounds) {
-        CGPoint groundWorldPosition = [_physicsNode convertToWorldSpace:ground.position];
-        CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
-        if (groundScreenPosition.x <= (-2 * ground.contentSize.width)) {
-            ground.position = ccp(ground.position.x +4 * ground.contentSize.width, ground.position.y);
-        }
-    }*/
-    
-    
-    
-    //collision check
-    CCSprite *sprite = [self spriteCollisionWithRect:_knight.boundingBox];
-    if (sprite!=nil) {
-        
-    }
-   //knightHP = knightHP-5;
 
-}
 
 
 
@@ -178,6 +157,30 @@
     return nil;
 }
 
+- (void)update:(CCTime)delta {
+    
+    //scrolling background
+    /*_physicsNode.position = ccp(_physicsNode.position.x - (scrollSpeed *delta), _physicsNode.position.y);
+     for (CCNode *ground in _grounds) {
+     CGPoint groundWorldPosition = [_physicsNode convertToWorldSpace:ground.position];
+     CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
+     if (groundScreenPosition.x <= (-2 * ground.contentSize.width)) {
+     ground.position = ccp(ground.position.x +4 * ground.contentSize.width, ground.position.y);
+     }
+     }*/
+    
+    
+    
+    //collision check
+    CCSprite *sprite = [self spriteCollisionWithRect:_knight.boundingBox];
+    if (sprite!=nil) {
+        
+    }
+    //Death Test
+    knightHP = knightHP-5;
+    
+}
+
 //tap action and knight movement
 - (void)touchBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     //move knight
@@ -185,7 +188,6 @@
     CCActionMoveBy *moveNodeRight = [CCActionMoveBy actionWithDuration:1.0f position:ccp(40.0f, 0.0f)];
     [_knight runAction:moveNodeRight];
     
-    //Death Test
     
     
     //Win Lose Check
