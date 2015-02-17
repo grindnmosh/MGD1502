@@ -7,14 +7,16 @@
 //
 
 #import "MarchBegins.h"
+#import "GameHud.h"
 #import <AVFoundation/AVFoundation.h>
 
 //static const CGFloat scrollSpeed = 80.f;
 
 @implementation MarchBegins
-
 //All initial calls including background music
 - (void)didLoadFromCCB {
+    width = [[CCDirector sharedDirector] viewSize];
+    NSLog(@"%f", width.width);
     //background music
     [[OALSimpleAudio sharedInstance] preloadBg:@"Alters.caf"];
     [[OALSimpleAudio sharedInstance] playBg:@"Alters.caf" loop:YES];
@@ -24,11 +26,49 @@
     _spritesArray = [NSMutableArray arrayWithObjects:_wiz, _darkSpirit, _gold, _boulder, nil];
     //enable touch
     self.userInteractionEnabled = TRUE;
+    _death1.visible = false;
+    _death2.visible = false;
+    _gainGold.visible =false;
+    //GH = [[GameHud alloc] init];
+    goldAmount = 9626;
+    knightHP = 500;
+    [_goldLabel setString:[NSString stringWithFormat:@"%ld", (long)goldAmount]];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"anim-knight.plist"];
     
+    //ANIMATION of my knight
+    NSMutableArray *animateKnight = [NSMutableArray array];
+    for (int i = 1; i <= 5; ++i) {
+        [animateKnight addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"hero%d.png", i]]];
+    }
+    CCAnimation *animate = [CCAnimation animationWithSpriteFrames:animateKnight delay:0.1f];
+    _knight.position = ccp(_knight.position.x, _knight.position.y);
+    [_knight setScaleX:0.3f];
+    [_knight setScaleY:0.6f];
+    _knight.anchorPoint = ccp(0,0);
+    CCActionAnimate *getAnimated = [CCActionAnimate actionWithAnimation:animate];
+    CCActionRepeatForever *knightForever = [CCActionRepeatForever actionWithAction:getAnimated];
+    [_knight runAction:knightForever];
+    
+    //win lose labels
+    _winner.visible = false;
+    _gameOver.visible = false;
     
 }
+
+
+- (id)init
+{
+    if (self = [super init])
+    {
+        
+    }
+    return self;
+}
+
+
+
 //sounds from week 1
-/*-(void)playSound:(id)sender
+-(void)playSound:(id)sender
 {
     
     if (sender == _knight) {
@@ -46,7 +86,9 @@
     {
         [[OALSimpleAudio sharedInstance] playEffect:@"Mace_Hit.caf" loop:NO];
     }
-}*/
+}
+
+
 
 //constant run method. scrolling background full works when run but constant. looking for way to run it only when knight moves. also runs collision check.
 - (void)update:(CCTime)delta {
@@ -61,14 +103,18 @@
         }
     }*/
     
+    
+    
     //collision check
     CCSprite *sprite = [self spriteCollisionWithRect:_knight.boundingBox];
     if (sprite!=nil) {
         
     }
-
+   //knightHP = knightHP-5;
 
 }
+
+
 
 //collision check method
 -(CCSprite*)spriteCollisionWithRect:(CGRect)bounds
@@ -81,6 +127,15 @@
                 [[OALSimpleAudio sharedInstance] playEffect:@"gold.caf" loop:NO];
                 [sprite removeFromParentAndCleanup:YES];
                 [_spritesArray removeObject:sprite];
+                goldAmount = goldAmount+1000;
+                NSLog(@"Gold:%ld", (long)goldAmount);
+                [_goldLabel setString:[NSString stringWithFormat:@"%ld", (long)goldAmount]];
+                CCActionShow *show = [CCActionShow action];
+                CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:2.0f];
+                CCActionHide *hide = [CCActionHide action];
+                CCActionSequence *die = [CCActionSequence actions:show, fadeOut, hide, nil];
+                [_gainGold runAction:die];
+                
             }
             else if (sprite == _darkSpirit)
             {
@@ -88,6 +143,11 @@
                 [[OALSimpleAudio sharedInstance] playEffect:@"Mace_Hit.caf" loop:NO];
                 [sprite removeFromParentAndCleanup:YES];
                 [_spritesArray removeObject:sprite];
+                CCActionShow *show = [CCActionShow action];
+                CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:2.0f];
+                CCActionHide *hide = [CCActionHide action];
+                CCActionSequence *die = [CCActionSequence actions:show, fadeOut, hide, nil];
+                [_death2 runAction:die];
             }
             else if (sprite == _wiz)
             {
@@ -95,6 +155,12 @@
                 [[OALSimpleAudio sharedInstance] playEffect:@"Mace_Hit.caf" loop:NO];
                 [sprite removeFromParentAndCleanup:YES];
                 [_spritesArray removeObject:sprite];
+                
+                CCActionShow *show = [CCActionShow action];
+                CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:2.0f];
+                CCActionHide *hide = [CCActionHide action];
+                CCActionSequence *die = [CCActionSequence actions:show, fadeOut, hide, nil];
+                [_death1 runAction:die];
             }
             else if (sprite == _boulder)
             {
@@ -113,12 +179,44 @@
 }
 
 //tap action and knight movement
-- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+- (void)touchBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     //move knight
     _knight.position = ccp(_knight.position.x, _knight.position.y);
     CCActionMoveBy *moveNodeRight = [CCActionMoveBy actionWithDuration:1.0f position:ccp(40.0f, 0.0f)];
     [_knight runAction:moveNodeRight];
     
+    //Death Test
+    
+    
+    //Win Lose Check
+    if (_knight.position.x  >= width.width) {
+        
+        [self winning];
+    }
+    else if (knightHP <= 0)
+    {
+        [self losing];
+    }
+    
+}
+
+//Method for level completyion
+-(void)winning
+{
+    _winner.visible = true;
+    goldAmount = goldAmount+2500;
+    NSLog(@"Gold:%ld", (long)goldAmount);
+    [_goldLabel setString:[NSString stringWithFormat:@"%ld", (long)goldAmount]];
+}
+
+//Method for dead knight
+-(void)losing
+{
+    _gameOver.visible = true;
+    goldAmount = 0;
+    NSLog(@"Gold:%ld", (long)goldAmount);
+    [_goldLabel setString:[NSString stringWithFormat:@"%ld", (long)goldAmount]];
+    [[CCDirector sharedDirector] pause];
 }
 
 

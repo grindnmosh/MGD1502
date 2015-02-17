@@ -94,7 +94,11 @@
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
+		E255273B1A910F2900D0B40B /* anim-knight.plist in Resources */ = {isa = PBXBuildFile; fileRef = E25527381A910F2900D0B40B /* anim-knight.plist */; };
+		E255273C1A910F2900D0B40B /* anim-knight.png in Resources */ = {isa = PBXBuildFile; fileRef = E25527391A910F2900D0B40B /* anim-knight.png */; };
+		E255273D1A910F2900D0B40B /* anim-knight.tps in Resources */ = {isa = PBXBuildFile; fileRef = E255273A1A910F2900D0B40B /* anim-knight.tps */; };
 		E266E7051A8A798400B2CD92 /* jump.caf in Resources */ = {isa = PBXBuildFile; fileRef = E266E7041A8A798400B2CD92 /* jump.caf */; };
+		E2C71CBF1A8C17C200D110BE /* GameHud.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C71CBE1A8C17C200D110BE /* GameHud.m */; };
 		E2D4D80B1A813B7100388F99 /* MarchBegins.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D80A1A813B7100388F99 /* MarchBegins.m */; };
 		E2D4D81A1A81501500388F99 /* gold.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D4D8171A81501500388F99 /* gold.wav */; };
 		E2D4D81B1A81501500388F99 /* Maced_Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D4D8181A81501500388F99 /* Maced_Hit.wav */; };
@@ -217,7 +221,12 @@
 		BC5399D61A44DCC90063F482 /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
 		BC5399D71A44DCC90063F482 /* JavaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaKit.framework"; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
+		E25527381A910F2900D0B40B /* anim-knight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "anim-knight.plist"; sourceTree = "<group>"; };
+		E25527391A910F2900D0B40B /* anim-knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anim-knight.png"; sourceTree = "<group>"; };
+		E255273A1A910F2900D0B40B /* anim-knight.tps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "anim-knight.tps"; sourceTree = "<group>"; };
 		E266E7041A8A798400B2CD92 /* jump.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump.caf; sourceTree = "<group>"; };
+		E2C71CBD1A8C17C200D110BE /* GameHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHud.h; sourceTree = "<group>"; };
+		E2C71CBE1A8C17C200D110BE /* GameHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHud.m; sourceTree = "<group>"; };
 		E2D4D8091A813B7100388F99 /* MarchBegins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarchBegins.h; path = Source/MarchBegins.h; sourceTree = "<group>"; };
 		E2D4D80A1A813B7100388F99 /* MarchBegins.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarchBegins.m; path = Source/MarchBegins.m; sourceTree = "<group>"; };
 		E2D4D8171A81501500388F99 /* gold.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gold.wav; sourceTree = "<group>"; };
@@ -349,6 +358,8 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				E2D4D8091A813B7100388F99 /* MarchBegins.h */,
 				E2D4D80A1A813B7100388F99 /* MarchBegins.m */,
+				E2C71CBD1A8C17C200D110BE /* GameHud.h */,
+				E2C71CBE1A8C17C200D110BE /* GameHud.m */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -535,6 +546,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E25527361A910EF400D0B40B /* anim-knight */,
 				E2D4D8151A81501500388F99 /* sfx */,
 				7A40366119DDF8C2007B6E8F /* Platforms */,
 				5B12100D197483EE004C1E1D /* res */,
@@ -555,6 +567,16 @@
 				B73789861807631A0076A88C /* Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E25527361A910EF400D0B40B /* anim-knight */ = {
+			isa = PBXGroup;
+			children = (
+				E25527381A910F2900D0B40B /* anim-knight.plist */,
+				E25527391A910F2900D0B40B /* anim-knight.png */,
+				E255273A1A910F2900D0B40B /* anim-knight.tps */,
+			);
+			name = "anim-knight";
 			sourceTree = "<group>";
 		};
 		E2D4D8151A81501500388F99 /* sfx */ = {
@@ -765,6 +787,7 @@
 			files = (
 				E2D4D8271A815B8D00388F99 /* Alters.mp3 in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
+				E255273C1A910F2900D0B40B /* anim-knight.png in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
 				E2D4D8221A8154CF00388F99 /* Realistic_Punch.caf in Resources */,
 				E2D4D8261A815B8D00388F99 /* Alters.caf in Resources */,
@@ -773,6 +796,7 @@
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
+				E255273B1A910F2900D0B40B /* anim-knight.plist in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				E2D4D81C1A81501500388F99 /* Realistic_Punch.wav in Resources */,
 				E2D4D8201A8154CF00388F99 /* gold.caf in Resources */,
@@ -780,6 +804,7 @@
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
 				E2D4D81A1A81501500388F99 /* gold.wav in Resources */,
 				E2D4D81B1A81501500388F99 /* Maced_Hit.wav in Resources */,
+				E255273D1A910F2900D0B40B /* anim-knight.tps in Resources */,
 				E2D4D8211A8154CF00388F99 /* Mace_Hit.caf in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
@@ -862,6 +887,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C71CBF1A8C17C200D110BE /* GameHud.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
