@@ -15,12 +15,6 @@
 @implementation MarchBegins
 //All initial calls including background music
 - (void)didLoadFromCCB {
-    width = [[CCDirector sharedDirector] viewSize];
-    NSLog(@"%f", width.width);
-    //background music
-    [[OALSimpleAudio sharedInstance] preloadBg:@"Alters.caf"];
-    [[OALSimpleAudio sharedInstance] playBg:@"Alters.caf" loop:YES];
-    //ground array for scrolling background
     _grounds = @[_ground1, _ground2, _ground3, _ground4, _ground5];
     //sprites array for determining which was collided with and which sound effect to play.
     _spritesArray = [NSMutableArray arrayWithObjects:_wiz, _darkSpirit, _gold, _boulder, nil];
@@ -29,41 +23,59 @@
     _death1.visible = false;
     _death2.visible = false;
     _gainGold.visible =false;
+    _menuButton.visible = false;
+    //win lose labels
+    _winner.visible = false;
+    _gameOver.visible = false;
     //GH = [[GameHud alloc] init];
     goldAmount = 9626;
     knightHP = 500;
     [_goldLabel setString:[NSString stringWithFormat:@"%ld", (long)goldAmount]];
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"anim-knight.plist"];
-    
+}
+
+
+-(void)newGame
+{
     //ANIMATION of my knight
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"anim-knight.plist"];
     NSMutableArray *animateKnight = [NSMutableArray array];
     for (int i = 1; i <= 5; ++i) {
         [animateKnight addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"hero%d.png", i]]];
     }
     CCAnimation *animate = [CCAnimation animationWithSpriteFrames:animateKnight delay:0.1f];
-    _knight.position = ccp(_knight.position.x, _knight.position.y);
+    NSLog(@"%f, %f", _knight.position.x, _knight.position.y);
+    _knight.position = ccp(-27.0f, 92.83f);
     [_knight setScaleX:0.3f];
     [_knight setScaleY:0.6f];
     _knight.anchorPoint = ccp(0,0);
     CCActionAnimate *getAnimated = [CCActionAnimate actionWithAnimation:animate];
     CCActionRepeatForever *knightForever = [CCActionRepeatForever actionWithAction:getAnimated];
     [_knight runAction:knightForever];
-    
-    //win lose labels
-    _winner.visible = false;
-    _gameOver.visible = false;
-    
 }
-
 
 - (id)init
 {
     if (self = [super init])
     {
+        _knight.position = ccp(-27.0f, 92.83f);
+        width = [[CCDirector sharedDirector] viewSize];
+        NSLog(@"%f", width.width);
+        //background music
+        [[OALSimpleAudio sharedInstance] preloadBg:@"Alters.caf"];
+        [[OALSimpleAudio sharedInstance] playBg:@"Alters.caf" loop:YES];
+        //ground array for scrolling background
+        
+        
+        
+        
+        [self newGame];
+        
+        
         
     }
     return self;
 }
+
 
 
 
@@ -177,7 +189,7 @@
         
     }
     //Death Test
-    knightHP = knightHP-5;
+    //knightHP = knightHP-5;
     
 }
 
@@ -209,6 +221,8 @@
     goldAmount = goldAmount+2500;
     NSLog(@"Gold:%ld", (long)goldAmount);
     [_goldLabel setString:[NSString stringWithFormat:@"%ld", (long)goldAmount]];
+    [[CCDirector sharedDirector] pause];
+    _menuButton.visible = true;
 }
 
 //Method for dead knight
@@ -221,7 +235,11 @@
     [[CCDirector sharedDirector] pause];
 }
 
-
+- (void)backToMenu:(id)sender
+{
+    [[CCDirector sharedDirector] replaceScene:[MarchBegins node]];
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
+}
 
 
 @end

@@ -37,7 +37,9 @@
     CCLabelTTF *_goldLabel;
     NSInteger goldAmount;
     CCLabelTTF *_winner;
+    CCButton *_menuButton;
     CCLabelTTF *_gameOver;
 }
+
 
 @end

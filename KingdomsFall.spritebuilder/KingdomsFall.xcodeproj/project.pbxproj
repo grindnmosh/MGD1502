@@ -97,6 +97,9 @@
 		E255273B1A910F2900D0B40B /* anim-knight.plist in Resources */ = {isa = PBXBuildFile; fileRef = E25527381A910F2900D0B40B /* anim-knight.plist */; };
 		E255273C1A910F2900D0B40B /* anim-knight.png in Resources */ = {isa = PBXBuildFile; fileRef = E25527391A910F2900D0B40B /* anim-knight.png */; };
 		E255273D1A910F2900D0B40B /* anim-knight.tps in Resources */ = {isa = PBXBuildFile; fileRef = E255273A1A910F2900D0B40B /* anim-knight.tps */; };
+		E25527411A9420C700D0B40B /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E25527401A9420C700D0B40B /* MenuScene.m */; };
+		E255274A1A94349900D0B40B /* Instructions.m in Sources */ = {isa = PBXBuildFile; fileRef = E25527491A94349900D0B40B /* Instructions.m */; };
+		E25527511A943F3A00D0B40B /* GameCredits.m in Sources */ = {isa = PBXBuildFile; fileRef = E25527501A943F3A00D0B40B /* GameCredits.m */; };
 		E266E7051A8A798400B2CD92 /* jump.caf in Resources */ = {isa = PBXBuildFile; fileRef = E266E7041A8A798400B2CD92 /* jump.caf */; };
 		E2C71CBF1A8C17C200D110BE /* GameHud.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C71CBE1A8C17C200D110BE /* GameHud.m */; };
 		E2D4D80B1A813B7100388F99 /* MarchBegins.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D80A1A813B7100388F99 /* MarchBegins.m */; };
@@ -224,6 +227,12 @@
 		E25527381A910F2900D0B40B /* anim-knight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "anim-knight.plist"; sourceTree = "<group>"; };
 		E25527391A910F2900D0B40B /* anim-knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anim-knight.png"; sourceTree = "<group>"; };
 		E255273A1A910F2900D0B40B /* anim-knight.tps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "anim-knight.tps"; sourceTree = "<group>"; };
+		E255273F1A9420C700D0B40B /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		E25527401A9420C700D0B40B /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
+		E25527481A94349900D0B40B /* Instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instructions.h; sourceTree = "<group>"; };
+		E25527491A94349900D0B40B /* Instructions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instructions.m; sourceTree = "<group>"; };
+		E255274F1A943F3A00D0B40B /* GameCredits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCredits.h; sourceTree = "<group>"; };
+		E25527501A943F3A00D0B40B /* GameCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCredits.m; sourceTree = "<group>"; };
 		E266E7041A8A798400B2CD92 /* jump.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = jump.caf; sourceTree = "<group>"; };
 		E2C71CBD1A8C17C200D110BE /* GameHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHud.h; sourceTree = "<group>"; };
 		E2C71CBE1A8C17C200D110BE /* GameHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHud.m; sourceTree = "<group>"; };
@@ -360,6 +369,12 @@
 				E2D4D80A1A813B7100388F99 /* MarchBegins.m */,
 				E2C71CBD1A8C17C200D110BE /* GameHud.h */,
 				E2C71CBE1A8C17C200D110BE /* GameHud.m */,
+				E255273F1A9420C700D0B40B /* MenuScene.h */,
+				E25527401A9420C700D0B40B /* MenuScene.m */,
+				E25527481A94349900D0B40B /* Instructions.h */,
+				E25527491A94349900D0B40B /* Instructions.m */,
+				E255274F1A943F3A00D0B40B /* GameCredits.h */,
+				E25527501A943F3A00D0B40B /* GameCredits.m */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -887,9 +902,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25527511A943F3A00D0B40B /* GameCredits.m in Sources */,
 				E2C71CBF1A8C17C200D110BE /* GameHud.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				E255274A1A94349900D0B40B /* Instructions.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				E25527411A9420C700D0B40B /* MenuScene.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				E2D4D80B1A813B7100388F99 /* MarchBegins.m in Sources */,
 			);
